@@ -494,9 +494,13 @@ async function downloadExactPdf() {
       windowWidth: paper.scrollWidth,
       windowHeight: paper.scrollHeight,
       onclone: (clonedDoc) => {
+        // Inject safety styles to prevent html2canvas CSS parser crashes
+        const safetyStyle = clonedDoc.createElement('style');
+        safetyStyle.textContent = 'input::before,input::after{content:none!important;display:none!important}';
+        clonedDoc.head.appendChild(safetyStyle);
+        // Strip CSS custom properties from inline styles
         clonedDoc.querySelectorAll('*').forEach(el => {
           if (!el.style || typeof el.style.getPropertyValue !== 'function') return;
-          // Remove any empty or broken inline style properties
           for (let i = el.style.length - 1; i >= 0; i--) {
             const prop = el.style[i];
             if (prop && prop.startsWith('--')) {
