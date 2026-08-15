@@ -480,7 +480,10 @@ document.querySelector('#save-pdf').addEventListener('click', () => {
   notify('Form cleared - ready for new client');
 });
 
-document.querySelector('#new-client').addEventListener('click', () => {
+document.querySelector('#new-client').addEventListener('click', handleNewClient);
+document.querySelector('#new-client-top').addEventListener('click', handleNewClient);
+
+function handleNewClient() {
   // Check if there's any unsaved data
   const saved = localStorage.getItem(STORAGE_KEY);
   const hasData = form.elements.clientName.value.trim() !== '' || 
@@ -499,7 +502,7 @@ document.querySelector('#new-client').addEventListener('click', () => {
     document.querySelector('#form-date').valueAsDate = new Date();
     notify('Ready for new client');
   }
-});
+}
 
 document.querySelector('#save-board').addEventListener('click', () => {
   notify('Your print dialog is open - choose “Save as PDF” to download the mood board.');
