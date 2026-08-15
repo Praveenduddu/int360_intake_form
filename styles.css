@@ -50,7 +50,6 @@ fieldset { min-inline-size: 0; margin: 0; padding: 28px 0 0; border: 0; }
 .form-section { position: relative; }
 legend { padding: 0; color: #fff; text-transform: uppercase; letter-spacing: .125em; font-size: 11px; font-weight: 700; }
 legend span { margin-right: 4px; }
-legend::before { content: ""; position: absolute; z-index: 0; left: -9px; top: 20px; width: fit-content; height: 28px; padding: 0 15px; border-radius: 2px 9px 9px 2px; background: var(--brown); box-shadow: 1px 3px 0 rgba(50, 37, 29, .14); }
 legend { position: relative; z-index: 1; height: 28px; padding: 7px 8px 0; }
 .client-grid, .project-grid, .requirements-grid, .budget-grid, .decision-grid, .followup-grid { border: 1px solid var(--line); border-radius: 15px; overflow: hidden; display: grid; }
 .client-grid { grid-template-columns: 3fr 1.85fr; }
@@ -204,7 +203,6 @@ footer em { margin-left: 6px; color: #fff9f2; letter-spacing: .03em; text-transf
   form { padding: 0 12px 12px; }
   fieldset { padding-top: 16px; break-inside: avoid; }
   legend { height: 18px; padding-top: 4px; font-size: 7px; }
-  legend::before { top: 11px; height: 18px; }
   .client-grid, .project-grid, .requirements-grid, .budget-grid, .decision-grid, .followup-grid { border-radius: 8px; }
   .field-stack, .checkbox-group, .project-middle, .special-field, .budget-grid .checkbox-group, .decision-grid .checkbox-group, .followup-grid .checkbox-group, .followup-grid > label { padding: 13px 14px; }
   .group-title { margin-bottom: 8px; font-size: 7px; }
