@@ -473,6 +473,11 @@ function downloadExactPdf() {
 
 document.querySelector('#save-pdf').addEventListener('click', () => {
   downloadExactPdf();
+  // Clear saved data and reset form for new client
+  clearSavedData();
+  form.reset();
+  document.querySelector('#form-date').valueAsDate = new Date();
+  notify('Form cleared - ready for new client');
 });
 
 document.querySelector('#save-board').addEventListener('click', () => {
