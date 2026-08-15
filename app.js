@@ -416,11 +416,11 @@ async function loadPdfLibraries() {
 
 async function buildExportSrcDoc() {
   const [htmlText, cssText] = await Promise.all([
-    fetch('exact-replica.html').then(response => {
+    fetch('exact-replica.html?v=' + Date.now()).then(response => {
       if (!response.ok) throw new Error('Form template missing');
       return response.text();
     }),
-    fetch('exact-replica.css').then(response => {
+    fetch('exact-replica.css?v=' + Date.now()).then(response => {
       if (!response.ok) throw new Error('Form styles missing');
       return response.text();
     })
