@@ -336,109 +336,33 @@ function checked(name, expected) {
   return getValues(name).includes(expected);
 }
 
-function formField(value, x, y, width, variant = '') {
-  if (!value) return '';
-  return `<span class="value ${variant}" style="left:${x}%;top:${y}%;width:${width}%">${escapeHtml(value)}</span>`;
+function wait(ms) {
+  return new Promise(resolve => window.setTimeout(resolve, ms));
 }
 
-function formTick(active, x, y) {
-  return active ? `<span class="tick" style="left:${x}%;top:${y}%">✓</span>` : '';
-}
-
-function exactTemplateHtml() {
-  const choice = getChoice;
-  const source = value => checked('source', value);
-  const area = value => checked('areas', value);
-  const style = value => checked('style', value);
-  const decision = value => checked('decisionMakers', value);
-  const contact = value => checked('contact', value);
-  const templateUrl = new URL('assets/entry-form-template.png', window.location.href).href;
-  const fields = [
-    formField(formatDate(document.querySelector('#form-date').value), 84.0, 9.65, 12),
-    formField(getField('clientName'), 31.4, 19.75, 31.2),
-    formField(getField('mobile'), 31.4, 22.20, 31.2),
-    formField(getField('email'), 31.4, 24.62, 31.2),
-    formField(getField('address'), 31.4, 26.85, 31.2, 'address'),
-    formField(getField('occupation'), 31.4, 31.05, 31.2),
-    formTick(source('Reference'), 67.6, 21.34), formTick(source('Instagram'), 67.6, 23.18),
-    formTick(source('Facebook'), 67.6, 25.03), formTick(source('Google'), 67.6, 26.88),
-    formTick(source('Website'), 67.6, 28.72), formTick(source('Walk-in'), 67.6, 30.58),
-    formTick(source('Other'), 67.6, 32.42), formField(getField('sourceOther'), 79.4, 32.65, 14.4),
-
-    formTick(choice('projectType') === 'Apartment', 21.2, 41.10), formTick(choice('projectType') === 'Villa', 21.2, 42.91),
-    formTick(choice('projectType') === 'Independent House', 21.2, 44.72), formTick(choice('projectType') === 'Commercial Office', 21.2, 46.53),
-    formTick(choice('projectType') === 'Retail Store', 21.2, 48.34), formTick(choice('projectType') === 'Restaurant / Cafe', 21.2, 50.15),
-    formTick(choice('projectType') === 'Other', 21.2, 51.96), formField(getField('projectTypeOther'), 30.0, 52.18, 11.1),
-    formField(getField('location'), 44.5, 41.14, 20.6),
-    formTick(choice('propertyStatus') === 'Under Construction', 44.5, 45.29), formTick(choice('propertyStatus') === 'Ready to Move', 44.5, 47.09),
-    formTick(choice('propertyStatus') === 'Renovation', 44.5, 48.89), formField(getField('area'), 44.5, 52.83, 18.6),
-    formTick(choice('bedrooms') === '1 BHK', 68.2, 41.10), formTick(choice('bedrooms') === '2 BHK', 68.2, 42.91),
-    formTick(choice('bedrooms') === '3 BHK', 68.2, 44.72), formTick(choice('bedrooms') === '4 BHK+', 68.2, 46.53),
-    formTick(choice('bedrooms') === 'Commercial', 68.2, 48.34),
-
-    formTick(area('Living Room'), 7.5, 63.25), formTick(area('Dining'), 7.5, 65.04), formTick(area('Kitchen'), 7.5, 66.83),
-    formTick(area('Bedrooms'), 7.5, 68.62), formTick(area('Bathrooms'), 7.5, 70.41),
-    formTick(area('Balcony'), 22.5, 63.25), formTick(area('Pooja Room'), 22.5, 65.04), formTick(area('Home Office'), 22.5, 66.83),
-    formTick(area('Complete Interior'), 22.5, 68.62), formTick(area('Other'), 22.5, 70.41), formField(getField('areasOther'), 30.1, 70.68, 10.3),
-    formTick(style('Modern'), 39.4, 63.25), formTick(style('Contemporary'), 39.4, 65.04), formTick(style('Minimalist'), 39.4, 66.83),
-    formTick(style('Luxury'), 39.4, 68.62), formTick(style('Traditional'), 39.4, 70.41),
-    formTick(style('Scandinavian'), 52.8, 63.25), formTick(style('Industrial'), 52.8, 65.04), formTick(style('Japandi'), 52.8, 66.83), formTick(style('Not Sure'), 52.8, 68.62),
-    formField(getField('preferences'), 69.1, 64.35, 24.2, 'note'),
-
-    formTick(choice('budget') === 'Below Rs 5 Lakhs', 7.4, 79.62), formTick(choice('budget') === 'Rs 5 - 10 Lakhs', 7.4, 81.42),
-    formTick(choice('budget') === 'Rs 10 - 20 Lakhs', 7.4, 83.22), formTick(choice('budget') === 'Rs 20 - 40 Lakhs', 7.4, 85.02),
-    formTick(choice('budget') === 'Rs 40 Lakhs+', 7.4, 86.82), formField(formatDate(getField('startDate')), 30.4, 80.10, 16.5), formField(formatDate(getField('moveInDate')), 30.4, 86.10, 16.5),
-    formTick(decision('Self'), 49.8, 79.62), formTick(decision('Spouse'), 49.8, 81.42), formTick(decision('Parents'), 49.8, 83.22),
-    formTick(decision('Business Partners'), 49.8, 85.02), formTick(decision('Other'), 49.8, 86.82), formField(getField('decisionOther'), 60.0, 87.03, 13.2),
-    formTick(choice('otherFirms') === 'Yes', 76.4, 80.48), formTick(choice('otherFirms') === 'No', 76.4, 82.15), formField(getField('otherFirmName'), 80.1, 84.95, 11.0),
-
-    formTick(choice('siteVisit') === 'Yes', 7.4, 93.05), formTick(choice('siteVisit') === 'No', 7.4, 94.87), formField(formatDate(getField('meetingDate')), 22.8, 93.65, 11.4),
-    formTick(contact('Call'), 36.8, 93.05), formTick(contact('WhatsApp'), 36.8, 94.87), formTick(contact('Email'), 36.8, 96.69),
-    formField(getField('consultantNotes'), 55.0, 92.00, 38.6, 'notes'), formField(getField('consultantName'), 70.2, 96.92, 17.2), formField(getField('signature'), 70.2, 98.52, 17.2)
-  ].join('');
-
-  return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>INT360 Completed Client Brief</title><style>
-    @page { size: A4; margin: 0; }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; width: 210mm; height: 297mm; background: #fff; }
-    .page { position: relative; width: 210mm; height: 297mm; overflow: hidden; }
-    .template { display: block; width: 100%; height: 100%; }
-    .value { position: absolute; color: #29211d; overflow: hidden; white-space: nowrap; text-overflow: clip; font: 500 2.1mm/1.15 Arial, sans-serif; letter-spacing: .01em; }
-    .address { height: 3.5%; white-space: normal; line-height: 1.32; }
-    .note { height: 6.6%; white-space: pre-wrap; line-height: 1.42; font-size: 1.7mm; }
-    .notes { height: 3.8%; white-space: pre-wrap; line-height: 1.35; font-size: 1.65mm; }
-    .tick { position: absolute; color: #2c251f; font: 700 2.5mm/1 Arial, sans-serif; }
-    @media print { html, body, .page { width: 210mm; height: 297mm; } }
-  </style></head><body><div class="page"><img class="template" src="${templateUrl}" alt="INT360 client information form">${fields}</div><script>window.addEventListener('load', function () { var image = document.querySelector('img'); var print = function () { setTimeout(function () { window.print(); }, 180); }; image.complete ? print() : image.addEventListener('load', print); });</script></body></html>`;
-}
-
-function downloadExactPdf() {
-  if (!form.reportValidity()) return;
-  const budgetValues = {
+function buildExactPdfPayload() {
+  const budgetMap = {
     'Below Rs 5 Lakhs': 'Below 5 Lakhs',
     'Rs 5 - 10 Lakhs': '5-10 Lakhs',
     'Rs 10 - 20 Lakhs': '10-20 Lakhs',
     'Rs 20 - 40 Lakhs': '20-40 Lakhs',
     'Rs 40 Lakhs+': '40 Lakhs+'
   };
-  const selectedBudget = getChoice('budget');
-  const client = getField('clientName') || 'Client';
-  const payload = {
-    title: `INT360 Client Brief - ${client}`,
-    print: true,
+
+  return {
     values: {
-      date: formatDate(document.querySelector('#form-date').value),
+      'date': formatDate(document.querySelector('#form-date').value),
       'client-name': getField('clientName'),
-      mobile: getField('mobile'),
-      email: getField('email'),
-      address: getField('address'),
-      occupation: getField('occupation'),
+      'mobile': getField('mobile'),
+      'email': getField('email'),
+      'address': getField('address'),
+      'occupation': getField('occupation'),
       'source-other': getField('sourceOther'),
       'project-other': getField('projectTypeOther'),
-      location: getField('location'),
-      area: getField('area'),
+      'location': getField('location'),
+      'area': getField('area'),
       'area-other': getField('areasOther'),
-      preferences: getField('preferences'),
+      'preferences': getField('preferences'),
       'start-date': formatDate(getField('startDate')),
       'move-in-date': formatDate(getField('moveInDate')),
       'decision-other': getField('decisionOther'),
@@ -446,37 +370,160 @@ function downloadExactPdf() {
       'meeting-date': formatDate(getField('meetingDate')),
       'consultant-notes': getField('consultantNotes'),
       'consultant-name': getField('consultantName'),
-      signature: getField('signature')
+      'signature': getField('signature')
     },
     checks: {
-      source: getValues('source'),
-      'project-type': [getChoice('projectType')],
-      status: [getChoice('propertyStatus')],
-      bedrooms: [getChoice('bedrooms')],
-      areas: getValues('areas'),
-      style: getValues('style'),
-      budget: [budgetValues[selectedBudget] || selectedBudget],
-      decision: getValues('decisionMakers'),
-      'other-firms': [getChoice('otherFirms')],
-      'site-visit': [getChoice('siteVisit')],
-      contact: getValues('contact')
+      'source': getValues('source'),
+      'project-type': getValues('projectType'),
+      'status': getValues('propertyStatus'),
+      'bedrooms': getValues('bedrooms'),
+      'areas': getValues('areas'),
+      'style': getValues('style'),
+      'budget': getValues('budget').map(v => budgetMap[v] || v),
+      'decision': getValues('decisionMakers'),
+      'other-firms': getValues('otherFirms'),
+      'site-visit': getValues('siteVisit'),
+      'contact': getValues('contact')
     }
   };
-  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-  const pdfWindow = window.open(`exact-replica.html#${encoded}`, 'int360-completed-brief');
-  if (!pdfWindow) {
-    notify('Please allow pop-ups, then select Download exact PDF again.');
-    return;
-  }
-  notify('Your completed code-built form is opening. Choose “Save as PDF” in the print dialog.');
 }
 
-document.querySelector('#save-pdf').addEventListener('click', () => {
-  downloadExactPdf();
+function fillExportDocument(doc, payload) {
+  Object.entries(payload.values || {}).forEach(([name, value]) => {
+    const control = doc.querySelector(`[name="${name}"]`);
+    if (control && typeof value === 'string') control.value = value;
+  });
+  Object.entries(payload.checks || {}).forEach(([name, selected]) => {
+    const allowed = new Set(selected || []);
+    doc.querySelectorAll(`[name="${name}"]`).forEach(control => {
+      control.checked = allowed.has(control.value);
+    });
+  });
+}
+
+async function loadPdfLibraries() {
+  const [html2canvasModule, jspdfModule] = await Promise.all([
+    import('https://cdn.jsdelivr.net/npm/html2canvas-pro@1.5.11/+esm'),
+    import('https://cdn.jsdelivr.net/npm/jspdf@2.5.2/+esm')
+  ]);
+  const html2canvas = html2canvasModule.default || html2canvasModule;
+  const jsPDF = jspdfModule.jsPDF || jspdfModule.default?.jsPDF || jspdfModule.default;
+  if (typeof html2canvas !== 'function' || typeof jsPDF !== 'function') {
+    throw new Error('PDF libraries failed to load');
+  }
+  return { html2canvas, jsPDF };
+}
+
+async function buildExportSrcDoc() {
+  const [htmlText, cssText] = await Promise.all([
+    fetch('exact-replica.html').then(response => {
+      if (!response.ok) throw new Error('Form template missing');
+      return response.text();
+    }),
+    fetch('exact-replica.css').then(response => {
+      if (!response.ok) throw new Error('Form styles missing');
+      return response.text();
+    })
+  ]);
+
+  const parsed = new DOMParser().parseFromString(htmlText, 'text/html');
+  const paper = parsed.querySelector('.paper');
+  if (!paper) throw new Error('Form markup missing');
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    ${cssText}
+    html, body { margin: 0 !important; padding: 0 !important; background: #ffffff !important; }
+    .paper { margin: 0 !important; box-shadow: none !important; }
+  </style>
+</head>
+<body>${paper.outerHTML}</body>
+</html>`;
+}
+
+async function downloadExactPdf() {
+  if (!form.reportValidity()) return false;
+
+  const button = document.querySelector('#save-pdf');
+  const client = getField('clientName') || 'Client';
+  const filename = `INT360-Client-Brief-${client.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'Client'}.pdf`;
+  const payload = buildExactPdfPayload();
+
+  button.disabled = true;
+  notify('Preparing your PDF…');
+
+  const iframe = document.createElement('iframe');
+  iframe.setAttribute('aria-hidden', 'true');
+  iframe.setAttribute('tabindex', '-1');
+  iframe.style.cssText = 'position:fixed;right:0;bottom:0;width:210mm;height:297mm;border:0;opacity:0;pointer-events:none;z-index:-1;';
+  document.body.appendChild(iframe);
+
+  try {
+    const [{ html2canvas, jsPDF }, srcdoc] = await Promise.all([
+      loadPdfLibraries(),
+      buildExportSrcDoc()
+    ]);
+
+    await new Promise((resolve, reject) => {
+      iframe.onload = () => resolve();
+      iframe.onerror = () => reject(new Error('Failed to load form template'));
+      iframe.srcdoc = srcdoc;
+    });
+
+    await wait(300);
+
+    const idoc = iframe.contentDocument;
+    if (!idoc) throw new Error('Form template unavailable');
+
+    fillExportDocument(idoc, payload);
+    await wait(200);
+
+    const paper = idoc.querySelector('.paper');
+    if (!paper) throw new Error('Form template missing');
+
+    const canvas = await html2canvas(paper, {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#fffefa',
+      scrollX: 0,
+      scrollY: 0,
+      windowWidth: paper.scrollWidth,
+      windowHeight: paper.scrollHeight
+    });
+
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4',
+      compress: true
+    });
+    pdf.addImage(canvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, 210, 297);
+    pdf.save(filename);
+
+    notify('PDF downloaded');
+    return true;
+  } catch (error) {
+    console.error(error);
+    notify('Could not download PDF. Please try again.');
+    return false;
+  } finally {
+    iframe.remove();
+    button.disabled = false;
+  }
+}
+
+document.querySelector('#save-pdf').addEventListener('click', async () => {
+  const downloaded = await downloadExactPdf();
+  if (!downloaded) return;
+
   clearSavedData();
   form.reset();
   document.querySelector('#form-date').valueAsDate = new Date();
-  notify('Brief cleared — ready for the next intake');
+  notify('PDF downloaded — brief cleared for the next intake');
 });
 
 document.querySelector('#clear-brief').addEventListener('click', handleClearBrief);
