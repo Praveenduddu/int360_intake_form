@@ -492,7 +492,25 @@ async function downloadExactPdf() {
       scrollX: 0,
       scrollY: 0,
       windowWidth: paper.scrollWidth,
-      windowHeight: paper.scrollHeight
+      windowHeight: paper.scrollHeight,
+      onclone: (clonedDoc) => {
+        clonedDoc.querySelectorAll('*').forEach(el => {
+          const cs = el.computedStyleMap ? null : null;
+          // Remove any empty or broken inline style properties
+          if (el.style && el.style.length) {
+            for (let i = el.style.length - 1; i >= 0; i--) {
+              const prop = el.style[i];
+              const val = el.style.getPropertyValue(prop);
+              if (!val || val === '' || prop.startsWith('--')) {
+                el.style.removeProperty(prop);
+              }
+            }
+          }
+          // Remove webkit-appearance which causes parser issues
+          el.style.removeProperty('-webkit-appearance');
+          el.style.removeProperty('appearance');
+        });
+      }
     });
 
     const pdf = new jsPDF({
