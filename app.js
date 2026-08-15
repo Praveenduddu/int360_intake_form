@@ -2,7 +2,134 @@ const form = document.querySelector('#client-form');
 const board = document.querySelector('#moodboard');
 const toast = document.querySelector('#toast');
 
+// Auto-save configuration
+const AUTO_SAVE_INTERVAL = 30000; // 30 seconds
+const STORAGE_KEY = 'int360_form_draft';
+
 document.querySelector('#form-date').valueAsDate = new Date();
+
+// Auto-save functionality
+function saveFormData() {
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  
+  // Handle checkboxes (multiple values)
+  const checkboxFields = ['source', 'areas', 'style', 'decisionMakers', 'contact'];
+  checkboxFields.forEach(field => {
+    const values = getValues(field);
+    if (values.length > 0) {
+      data[field] = values;
+    }
+  });
+  
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  
+  // Show subtle save indicator
+  const saveIndicator = document.querySelector('#save-indicator');
+  if (saveIndicator) {
+    saveIndicator.textContent = 'Saved';
+    saveIndicator.style.opacity = '1';
+    setTimeout(() => {
+      saveIndicator.style.opacity = '0';
+    }, 2000);
+  }
+}
+
+function loadFormData() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return;
+  
+  try {
+    const data = JSON.parse(saved);
+    
+    // Restore text inputs and selects
+    Object.keys(data).forEach(key => {
+      const field = form.elements[key];
+      if (!field) return;
+      
+      // Skip checkbox/radio groups for now
+      if (field.type === 'checkbox' || field.type === 'radio') return;
+      
+      field.value = data[key];
+    });
+    
+    // Restore checkboxes
+    if (Array.isArray(data.source)) {
+      data.source.forEach(value => {
+        const checkbox = form.querySelector(`input[name="source"][value="${value}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+    
+    if (Array.isArray(data.areas)) {
+      data.areas.forEach(value => {
+        const checkbox = form.querySelector(`input[name="areas"][value="${value}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+    
+    if (Array.isArray(data.style)) {
+      data.style.forEach(value => {
+        const checkbox = form.querySelector(`input[name="style"][value="${value}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+    
+    if (Array.isArray(data.decisionMakers)) {
+      data.decisionMakers.forEach(value => {
+        const checkbox = form.querySelector(`input[name="decisionMakers"][value="${value}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+    
+    if (Array.isArray(data.contact)) {
+      data.contact.forEach(value => {
+        const checkbox = form.querySelector(`input[name="contact"][value="${value}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+    
+    // Restore radio buttons
+    const radioFields = ['projectType', 'propertyStatus', 'bedrooms', 'budget', 'otherFirms', 'siteVisit'];
+    radioFields.forEach(field => {
+      if (data[field]) {
+        const radio = form.querySelector(`input[name="${field}"][value="${data[field]}"]`);
+        if (radio) radio.checked = true;
+      }
+    });
+    
+    console.log('Form data restored from auto-save');
+  } catch (error) {
+    console.error('Failed to load saved form data:', error);
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
+function clearSavedData() {
+  localStorage.removeItem(STORAGE_KEY);
+}
+
+// Load saved data on page load
+loadFormData();
+
+// Set up auto-save interval
+let autoSaveTimer = setInterval(saveFormData, AUTO_SAVE_INTERVAL);
+
+// Save on form input changes (debounced)
+let saveTimeout;
+form.addEventListener('input', () => {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(saveFormData, 1000);
+});
+
+// Clear auto-save when form is successfully submitted
+form.addEventListener('submit', event => {
+  if (form.reportValidity()) {
+    clearSavedData();
+    clearTimeout(saveTimeout);
+    clearInterval(autoSaveTimer);
+  }
+});
 
 const styles = {
   Modern: {
