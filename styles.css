@@ -113,31 +113,48 @@ h1 em, h2 em, footer em { color: var(--clay); font-weight: 600; }
   background: transparent;
   outline: 0;
 }
-#new-client-top {
-  gap: 8px;
+.clear-brief {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   min-height: 52px;
   padding: 0 18px;
-  border: 1px solid #cfc4b9;
+  border: 1px solid var(--brown);
   border-radius: 2px;
-  color: var(--brown);
-  background: #fffefa;
+  background: var(--brown);
+  color: #fff;
   font: 600 10px "DM Mono", monospace;
   letter-spacing: .1em;
   text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(91, 69, 54, .22);
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
 }
-#new-client-top span {
-  display: inline-grid;
-  place-items: center;
-  width: 18px;
-  height: 18px;
+.clear-brief:hover {
+  background: #4a372c;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(91, 69, 54, .28);
+}
+.clear-brief-icon {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid currentColor;
   border-radius: 50%;
-  color: #fff;
-  background: var(--brown);
-  font: 700 14px/1 "DM Sans", sans-serif;
+  border-top-color: transparent;
+  position: relative;
+  flex: 0 0 auto;
 }
-#new-client-top:hover {
-  border-color: var(--brown);
-  background: #f7f1ea;
+.clear-brief-icon::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 1px;
+  width: 4px;
+  height: 4px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
 }
 form { padding: 8px 28px 28px; }
 fieldset { min-inline-size: 0; margin: 0; padding: 22px 0 0; border: 0; }
@@ -240,12 +257,11 @@ input[type="checkbox"]:checked::after, input[type="radio"]:checked::after { tran
 .form-actions { display: flex; justify-content: space-between; align-items: center; padding: 37px 4px 0; gap: 20px; }
 .form-actions p { margin: 0; max-width: 390px; color: var(--muted); font-size: 11px; line-height: 1.45; }
 .privacy-mark { display: inline-grid; place-items: center; width: 15px; height: 15px; margin-right: 4px; border-radius: 50%; color: #fff; background: #708062; font-size: 9px; }
-.action-buttons { display: flex; gap: 10px; }
+.action-buttons { display: flex; gap: 10px; flex-shrink: 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 43px; padding: 0 17px; border: 1px solid transparent; border-radius: 2px; font-size: 12px; font-weight: 700; letter-spacing: .01em; transition: transform .15s ease, background .15s ease; }
 .button:hover { transform: translateY(-1px); }
 .button.primary { color: #fff; background: var(--brown); }
 .button.secondary { color: var(--brown); border-color: #bdb1a6; background: transparent; }
-.button.tertiary { color: var(--brown); border-color: #cfc4b9; background: #fffefa; }
 .button.dark { color: #fff; background: var(--ink); }
 
 .moodboard { margin-top: 0; padding: 48px 24px 56px; scroll-margin-top: 20px; border-top: 1px solid var(--line); }
@@ -290,7 +306,7 @@ footer em { margin-left: 6px; color: #fff9f2; letter-spacing: .03em; text-transf
   .form-heading { padding: 28px 24px 24px; gap: 20px; }
   .form-heading h2 { font-size: 32px; }
   .header-actions { gap: 10px; }
-  #new-client-top, .date-field { min-height: 48px; }
+  .clear-brief, .date-field { min-height: 48px; }
   .requirements-grid .checkbox-group { padding: 25px; }
   .special-field { min-height: 180px; }
 }
@@ -299,8 +315,7 @@ footer em { margin-left: 6px; color: #fff9f2; letter-spacing: .03em; text-transf
   h1 { font-size: 44px; }
   .form-heading { display: flex; flex-direction: column; align-items: stretch; padding: 26px 20px 22px; }
   .header-actions { flex-direction: column-reverse; gap: 10px; width: 100%; }
-  .date-field, #new-client-top { width: 100%; }
-  #new-client-top { justify-content: center; }
+  .date-field, .clear-brief { width: 100%; }
   form { padding: 0 15px 22px; }
   .options.two-columns, .budget-grid, .decision-grid, .followup-grid { grid-template-columns: 1fr; }
   .budget-grid .checkbox-group, .decision-grid .checkbox-group { border-bottom: 1px solid var(--line); border-right: 0; }
@@ -322,7 +337,7 @@ footer em { margin-left: 6px; color: #fff9f2; letter-spacing: .03em; text-transf
 @media print {
   @page { size: A4; margin: 7mm; }
   body { background: #fff; }
-  .site-header, .intro, .moodboard, footer, #toast, .form-actions { display: none !important; }
+  .site-header, .intro, .moodboard, footer, #toast, .form-actions, .clear-brief { display: none !important; }
   main { max-width: none; padding: 0; }
   .intake-card { border: 0; box-shadow: none; }
   .form-heading { min-height: 75px; padding: 12px 18px; }

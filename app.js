@@ -473,35 +473,33 @@ function downloadExactPdf() {
 
 document.querySelector('#save-pdf').addEventListener('click', () => {
   downloadExactPdf();
-  // Clear saved data and reset form for new client
   clearSavedData();
   form.reset();
   document.querySelector('#form-date').valueAsDate = new Date();
-  notify('Form cleared - ready for new client');
+  notify('Brief cleared — ready for the next intake');
 });
 
-document.querySelector('#new-client').addEventListener('click', handleNewClient);
-document.querySelector('#new-client-top').addEventListener('click', handleNewClient);
+document.querySelector('#clear-brief').addEventListener('click', handleClearBrief);
 
-function handleNewClient() {
-  // Check if there's any unsaved data
+function handleClearBrief() {
   const saved = localStorage.getItem(STORAGE_KEY);
-  const hasData = form.elements.clientName.value.trim() !== '' || 
+  const hasData = form.elements.clientName.value.trim() !== '' ||
                   form.elements.mobile.value.trim() !== '' ||
                   saved !== null;
-  
+
   if (hasData) {
-    if (confirm('You have unsaved client information. Are you sure you want to start a new client? All current data will be lost.')) {
+    if (confirm('Clear this brief and start a new intake? Current answers will be lost.')) {
       clearSavedData();
       form.reset();
       document.querySelector('#form-date').valueAsDate = new Date();
-      notify('Form cleared - ready for new client');
+      notify('Brief cleared — ready for the next intake');
     }
-  } else {
-    form.reset();
-    document.querySelector('#form-date').valueAsDate = new Date();
-    notify('Ready for new client');
+    return;
   }
+
+  form.reset();
+  document.querySelector('#form-date').valueAsDate = new Date();
+  notify('Ready for a new brief');
 }
 
 document.querySelector('#save-board').addEventListener('click', () => {
