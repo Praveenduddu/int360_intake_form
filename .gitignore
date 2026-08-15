@@ -1,12 +1,1 @@
-```gitignore
-# Dependencies
-node_modules/
-
-# Editors
-.vscode/
-
-# Environment
-.env
-.env.local
-*.env.*
-```
+(empty)
