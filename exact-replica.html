@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interior Design - Walk-in Client Information Form</title>
+    <link rel="stylesheet" href="exact-replica.css" />
+  </head>
+  <body>
+    <main class="paper" aria-label="Interior design walk-in client information form">
+      <aside class="decor" aria-hidden="true">
+        <i class="edge"></i><i class="arch"><b></b><b></b><b></b></i><i class="floor"></i>
+      </aside>
+
+      <header class="form-header">
+        <div class="brand" aria-label="INT360 Design Studio">
+          <span class="fingerprint"><i></i><i></i><i></i><i></i></span>
+          <strong>INT360</strong><small>DESIGN STUDIO</small>
+        </div>
+        <div class="form-title"><h1>INTERIOR DESIGN</h1><p>WALK-IN CLIENT INFORMATION FORM</p><i></i></div>
+        <label class="date-box">DATE:<input name="date" type="text" aria-label="Date" /></label>
+      </header>
+
+      <form class="brief-form">
+        <section class="section client-section">
+          <h2>1. CLIENT DETAILS</h2>
+          <div class="panel client-grid">
+            <div class="lines">
+              <label>Client Name <input name="client-name" type="text" /></label>
+              <label>Mobile Number <input name="mobile" type="tel" /></label>
+              <label>Email ID <input name="email" type="email" /></label>
+              <label class="address">Current Address <textarea name="address" rows="2"></textarea></label>
+              <label>Occupation <input name="occupation" type="text" /></label>
+            </div>
+            <div class="option-block source">
+              <h3>HOW DID YOU HEAR ABOUT US?</h3>
+              <div class="options"><label><input type="checkbox" name="source" value="Reference" />Reference</label><label><input type="checkbox" name="source" value="Instagram" />Instagram</label><label><input type="checkbox" name="source" value="Facebook" />Facebook</label><label><input type="checkbox" name="source" value="Google" />Google</label><label><input type="checkbox" name="source" value="Website" />Website</label><label><input type="checkbox" name="source" value="Walk-in" />Walk-in</label><label class="other"><input type="checkbox" name="source" value="Other" />Other:<input type="text" name="source-other" /></label></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section project-section">
+          <h2>2. PROJECT INFORMATION</h2>
+          <div class="panel project-grid">
+            <div class="option-block split-right"><h3>PROJECT TYPE</h3><div class="options"><label><input type="radio" name="project-type" value="Apartment" />Apartment</label><label><input type="radio" name="project-type" value="Villa" />Villa</label><label><input type="radio" name="project-type" value="Independent House" />Independent House</label><label><input type="radio" name="project-type" value="Commercial Office" />Commercial Office</label><label><input type="radio" name="project-type" value="Retail Store" />Retail Store</label><label><input type="radio" name="project-type" value="Restaurant / Cafe" />Restaurant / Cafe</label><label class="other"><input type="radio" name="project-type" value="Other" />Other:<input type="text" name="project-other" /></label></div></div>
+            <div class="project-middle split-right"><label>PROJECT LOCATION<input name="location" type="text" /></label><div class="rule"></div><div class="option-block"><h3>PROPERTY STATUS</h3><div class="options short"><label><input type="radio" name="status" value="Under Construction" />Under Construction</label><label><input type="radio" name="status" value="Ready to Move" />Ready to Move</label><label><input type="radio" name="status" value="Renovation" />Renovation</label></div></div><div class="rule"></div><label>BUILT-UP AREA (SQ.FT.)<input name="area" type="text" /></label></div>
+            <div class="option-block bedrooms"><h3>NUMBER OF BEDROOMS</h3><div class="options"><label><input type="radio" name="bedrooms" value="1 BHK" />1 BHK</label><label><input type="radio" name="bedrooms" value="2 BHK" />2 BHK</label><label><input type="radio" name="bedrooms" value="3 BHK" />3 BHK</label><label><input type="radio" name="bedrooms" value="4 BHK+" />4 BHK+</label><label><input type="radio" name="bedrooms" value="Commercial" />Commercial</label></div></div>
+          </div>
+        </section>
+
+        <section class="section requirements-section">
+          <h2>3. REQUIREMENTS</h2>
+          <div class="panel requirements-grid">
+            <div class="option-block areas split-right"><h3>AREAS TO BE DESIGNED</h3><div class="options columns"><label><input type="checkbox" name="areas" value="Living Room" />Living Room</label><label><input type="checkbox" name="areas" value="Balcony" />Balcony</label><label><input type="checkbox" name="areas" value="Dining" />Dining</label><label><input type="checkbox" name="areas" value="Pooja Room" />Pooja Room</label><label><input type="checkbox" name="areas" value="Kitchen" />Kitchen</label><label><input type="checkbox" name="areas" value="Home Office" />Home Office</label><label><input type="checkbox" name="areas" value="Bedrooms" />Bedrooms</label><label><input type="checkbox" name="areas" value="Complete Interior" />Complete Interior</label><label><input type="checkbox" name="areas" value="Bathrooms" />Bathrooms</label><label class="other"><input type="checkbox" name="areas" value="Other" />Other:<input type="text" name="area-other" /></label></div></div>
+            <div class="option-block styles split-right"><h3>PREFERRED STYLE</h3><div class="options columns"><label><input type="checkbox" name="style" value="Modern" />Modern</label><label><input type="checkbox" name="style" value="Scandinavian" />Scandinavian</label><label><input type="checkbox" name="style" value="Contemporary" />Contemporary</label><label><input type="checkbox" name="style" value="Industrial" />Industrial</label><label><input type="checkbox" name="style" value="Minimalist" />Minimalist</label><label><input type="checkbox" name="style" value="Japandi" />Japandi</label><label><input type="checkbox" name="style" value="Luxury" />Luxury</label><label><input type="checkbox" name="style" value="Not Sure" />Not Sure</label><label><input type="checkbox" name="style" value="Traditional" />Traditional</label></div></div>
+            <label class="notes">SPECIAL REQUIREMENTS /<br />PREFERENCES<textarea name="preferences" rows="4"></textarea></label>
+          </div>
+        </section>
+
+        <div class="two-up">
+          <section class="section budget-section"><h2>4. BUDGET &amp; TIMELINE</h2><div class="panel budget-grid"><div class="option-block split-right"><h3>EXPECTED BUDGET</h3><div class="options"><label><input type="radio" name="budget" value="Below 5 Lakhs" />Below ₹5 Lakhs</label><label><input type="radio" name="budget" value="5-10 Lakhs" />₹5 - 10 Lakhs</label><label><input type="radio" name="budget" value="10-20 Lakhs" />₹10 - 20 Lakhs</label><label><input type="radio" name="budget" value="20-40 Lakhs" />₹20 - 40 Lakhs</label><label><input type="radio" name="budget" value="40 Lakhs+" />₹40 Lakhs+</label></div></div><div class="dates"><label>EXPECTED START DATE<input name="start-date" type="text" /></label><label>EXPECTED MOVE-IN DATE<input name="move-in-date" type="text" /></label></div></div></section>
+          <section class="section decision-section"><h2>5. DECISION MAKING</h2><div class="panel decision-grid"><div class="option-block split-right"><h3>WHO WILL BE INVOLVED IN FINAL DECISIONS?</h3><div class="options"><label><input type="checkbox" name="decision" value="Self" />Self</label><label><input type="checkbox" name="decision" value="Spouse" />Spouse</label><label><input type="checkbox" name="decision" value="Parents" />Parents</label><label><input type="checkbox" name="decision" value="Business Partners" />Business Partners</label><label class="other"><input type="checkbox" name="decision" value="Other" />Other:<input type="text" name="decision-other" /></label></div></div><div class="option-block consulted"><h3>HAVE YOU CONSULTED ANY OTHER INTERIOR FIRMS?</h3><div class="options inline"><label><input type="radio" name="other-firms" value="Yes" />Yes</label><label><input type="radio" name="other-firms" value="No" />No</label></div><label class="firm">If Yes, Name:<input name="firm-name" type="text" /></label></div></div></section>
+        </div>
+
+        <div class="two-up final-row">
+          <section class="section visit-section"><h2>6. SITE VISIT &amp; FOLLOW-UP</h2><div class="panel visit-grid"><div class="option-block split-right"><h3>SITE VISIT REQUIRED?</h3><div class="options"><label><input type="radio" name="site-visit" value="Yes" />Yes</label><label><input type="radio" name="site-visit" value="No" />No</label></div></div><label class="meeting split-right">PREFERRED MEETING DATE<input name="meeting-date" type="text" /></label><div class="option-block"><h3>PREFERRED CONTACT METHOD</h3><div class="options"><label><input type="checkbox" name="contact" value="Call" />Call</label><label><input type="checkbox" name="contact" value="WhatsApp" />WhatsApp</label><label><input type="checkbox" name="contact" value="Email" />Email</label></div></div></div></section>
+          <section class="section consultant-section"><h2>7. NOTES BY DESIGN CONSULTANT</h2><div class="panel consultant"><textarea name="consultant-notes" rows="3" aria-label="Notes by design consultant"></textarea><div><label>CONSULTANT NAME:<input name="consultant-name" type="text" /></label><label>SIGNATURE:<input name="signature" type="text" /></label></div></div></section>
+        </div>
+      </form>
+      <footer>THANK YOU FOR TRUSTING US WITH YOUR DREAM SPACE.<em>We look forward to designing it for you!</em></footer>
+    </main>
+    <script src="exact-replica.js"></script>
+  </body>
+</html>

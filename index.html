@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#443329" />
+    <title>INT360 | Client Intake</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#intake" aria-label="INT360 Design Studio home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span><b>INT360</b><small>DESIGN STUDIO</small></span>
+        </a>
+        <div class="header-meta">
+          <span class="live-dot"></span>
+          <span>REPRESENTATIVE PORTAL</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">Walk-in client information form</p>
+          <h1 id="page-title">Let’s design a space<br />that feels like <em>home.</em></h1>
+          <p class="intro-copy">Capture the client brief, save a completed PDF, and turn their answers into a focused interior direction.</p>
+          <div class="progress" aria-label="Two step process">
+            <span class="active"><b>01</b> Client brief</span>
+            <i></i>
+            <span><b>02</b> Mood board</span>
+          </div>
+        </section>
+
+        <section id="intake" class="intake-card" aria-labelledby="form-heading">
+          <div class="form-heading">
+            <div>
+              <p class="form-kicker">INT360 DESIGN STUDIO</p>
+              <h2 id="form-heading">Interior design<br />client brief</h2>
+            </div>
+            <label class="date-field">DATE
+              <input type="date" name="form-date" id="form-date" />
+            </label>
+          </div>
+
+          <form id="client-form">
+            <fieldset class="form-section client-details">
+              <legend><span>1.</span> Client details</legend>
+              <div class="client-grid">
+                <div class="field-stack">
+                  <label>Client name<input name="clientName" id="client-name" type="text" placeholder="Enter full name" required /></label>
+                  <label>Mobile number<input name="mobile" type="tel" placeholder="+91" required /></label>
+                  <label>Email ID<input name="email" type="email" placeholder="name@email.com" /></label>
+                  <label>Current address<textarea name="address" rows="2" placeholder="Street, city, postcode"></textarea></label>
+                  <label>Occupation<input name="occupation" type="text" placeholder="Profession or business" /></label>
+                </div>
+                <div class="checkbox-group source-group">
+                  <p class="group-title">How did you hear about us?</p>
+                  <div class="options two-columns">
+                    <label><input type="checkbox" name="source" value="Reference" /><span>Reference</span></label>
+                    <label><input type="checkbox" name="source" value="Instagram" /><span>Instagram</span></label>
+                    <label><input type="checkbox" name="source" value="Facebook" /><span>Facebook</span></label>
+                    <label><input type="checkbox" name="source" value="Google" /><span>Google</span></label>
+                    <label><input type="checkbox" name="source" value="Website" /><span>Website</span></label>
+                    <label><input type="checkbox" name="source" value="Walk-in" /><span>Walk-in</span></label>
+                  </div>
+                  <label class="other-input"><input type="checkbox" name="source" value="Other" /><span>Other</span><input type="text" name="sourceOther" aria-label="Other source" /></label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span>2.</span> Project information</legend>
+              <div class="project-grid">
+                <div class="checkbox-group bordered-right">
+                  <p class="group-title">Project type</p>
+                  <div class="options">
+                    <label><input type="radio" name="projectType" value="Apartment" /><span>Apartment</span></label>
+                    <label><input type="radio" name="projectType" value="Villa" /><span>Villa</span></label>
+                    <label><input type="radio" name="projectType" value="Independent House" /><span>Independent house</span></label>
+                    <label><input type="radio" name="projectType" value="Commercial Office" /><span>Commercial office</span></label>
+                    <label><input type="radio" name="projectType" value="Retail Store" /><span>Retail store</span></label>
+                    <label><input type="radio" name="projectType" value="Restaurant / Cafe" /><span>Restaurant / cafe</span></label>
+                    <label class="other-input"><input type="radio" name="projectType" value="Other" /><span>Other</span><input type="text" name="projectTypeOther" aria-label="Other project type" /></label>
+                  </div>
+                </div>
+                <div class="project-middle bordered-right">
+                  <label>Project location<input name="location" type="text" placeholder="City / locality" /></label>
+                  <div class="inner-divider"></div>
+                  <div class="checkbox-group compact">
+                    <p class="group-title">Property status</p>
+                    <div class="options">
+                      <label><input type="radio" name="propertyStatus" value="Under Construction" /><span>Under construction</span></label>
+                      <label><input type="radio" name="propertyStatus" value="Ready to Move" /><span>Ready to move</span></label>
+                      <label><input type="radio" name="propertyStatus" value="Renovation" /><span>Renovation</span></label>
+                    </div>
+                  </div>
+                  <div class="inner-divider"></div>
+                  <label>Built-up area (sq. ft.)<input name="area" type="number" min="0" placeholder="e.g. 1450" /></label>
+                </div>
+                <div class="checkbox-group bedrooms">
+                  <p class="group-title">Number of bedrooms</p>
+                  <div class="options">
+                    <label><input type="radio" name="bedrooms" value="1 BHK" /><span>1 BHK</span></label>
+                    <label><input type="radio" name="bedrooms" value="2 BHK" /><span>2 BHK</span></label>
+                    <label><input type="radio" name="bedrooms" value="3 BHK" /><span>3 BHK</span></label>
+                    <label><input type="radio" name="bedrooms" value="4 BHK+" /><span>4 BHK+</span></label>
+                    <label><input type="radio" name="bedrooms" value="Commercial" /><span>Commercial</span></label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span>3.</span> Requirements</legend>
+              <div class="requirements-grid">
+                <div class="checkbox-group bordered-right">
+                  <p class="group-title">Areas to be designed</p>
+                  <div class="options two-columns">
+                    <label><input type="checkbox" name="areas" value="Living Room" /><span>Living room</span></label>
+                    <label><input type="checkbox" name="areas" value="Balcony" /><span>Balcony</span></label>
+                    <label><input type="checkbox" name="areas" value="Dining" /><span>Dining</span></label>
+                    <label><input type="checkbox" name="areas" value="Pooja Room" /><span>Pooja room</span></label>
+                    <label><input type="checkbox" name="areas" value="Kitchen" /><span>Kitchen</span></label>
+                    <label><input type="checkbox" name="areas" value="Home Office" /><span>Home office</span></label>
+                    <label><input type="checkbox" name="areas" value="Bedrooms" /><span>Bedrooms</span></label>
+                    <label><input type="checkbox" name="areas" value="Complete Interior" /><span>Complete interior</span></label>
+                    <label><input type="checkbox" name="areas" value="Bathrooms" /><span>Bathrooms</span></label>
+                  </div>
+                  <label class="other-input"><input type="checkbox" name="areas" value="Other" /><span>Other</span><input type="text" name="areasOther" aria-label="Other area" /></label>
+                </div>
+                <div class="checkbox-group bordered-right styles">
+                  <p class="group-title">Preferred style</p>
+                  <div class="options two-columns">
+                    <label><input type="checkbox" name="style" value="Modern" /><span>Modern</span></label>
+                    <label><input type="checkbox" name="style" value="Scandinavian" /><span>Scandinavian</span></label>
+                    <label><input type="checkbox" name="style" value="Contemporary" /><span>Contemporary</span></label>
+                    <label><input type="checkbox" name="style" value="Industrial" /><span>Industrial</span></label>
+                    <label><input type="checkbox" name="style" value="Minimalist" /><span>Minimalist</span></label>
+                    <label><input type="checkbox" name="style" value="Japandi" /><span>Japandi</span></label>
+                    <label><input type="checkbox" name="style" value="Luxury" /><span>Luxury</span></label>
+                    <label><input type="checkbox" name="style" value="Not Sure" /><span>Not sure</span></label>
+                    <label><input type="checkbox" name="style" value="Traditional" /><span>Traditional</span></label>
+                  </div>
+                </div>
+                <label class="special-field">Special requirements / preferences<textarea name="preferences" rows="7" placeholder="Lifestyle, storage needs, colours, accessibility, materials, inspirations..."></textarea></label>
+              </div>
+            </fieldset>
+
+            <div class="split-row">
+              <fieldset class="form-section half-section">
+                <legend><span>4.</span> Budget &amp; timeline</legend>
+                <div class="budget-grid">
+                  <div class="checkbox-group bordered-right">
+                    <p class="group-title">Expected budget</p>
+                    <div class="options">
+                      <label><input type="radio" name="budget" value="Below Rs 5 Lakhs" /><span>Below Rs 5 Lakhs</span></label>
+                      <label><input type="radio" name="budget" value="Rs 5 - 10 Lakhs" /><span>Rs 5 - 10 Lakhs</span></label>
+                      <label><input type="radio" name="budget" value="Rs 10 - 20 Lakhs" /><span>Rs 10 - 20 Lakhs</span></label>
+                      <label><input type="radio" name="budget" value="Rs 20 - 40 Lakhs" /><span>Rs 20 - 40 Lakhs</span></label>
+                      <label><input type="radio" name="budget" value="Rs 40 Lakhs+" /><span>Rs 40 Lakhs+</span></label>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <label>Expected start date<input name="startDate" type="date" /></label>
+                    <label>Expected move-in date<input name="moveInDate" type="date" /></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-section half-section">
+                <legend><span>5.</span> Decision making</legend>
+                <div class="decision-grid">
+                  <div class="checkbox-group bordered-right">
+                    <p class="group-title">Who will be involved in final decisions?</p>
+                    <div class="options">
+                      <label><input type="checkbox" name="decisionMakers" value="Self" /><span>Self</span></label>
+                      <label><input type="checkbox" name="decisionMakers" value="Spouse" /><span>Spouse</span></label>
+                      <label><input type="checkbox" name="decisionMakers" value="Parents" /><span>Parents</span></label>
+                      <label><input type="checkbox" name="decisionMakers" value="Business Partners" /><span>Business partners</span></label>
+                      <label class="other-input"><input type="checkbox" name="decisionMakers" value="Other" /><span>Other</span><input type="text" name="decisionOther" aria-label="Other decision maker" /></label>
+                    </div>
+                  </div>
+                  <div class="checkbox-group consult">
+                    <p class="group-title">Have you consulted any other interior firms?</p>
+                    <div class="options inline-options">
+                      <label><input type="radio" name="otherFirms" value="Yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="otherFirms" value="No" /><span>No</span></label>
+                    </div>
+                    <label class="mini-input">If yes, name<input name="otherFirmName" type="text" /></label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="split-row last-row">
+              <fieldset class="form-section half-section">
+                <legend><span>6.</span> Site visit &amp; follow-up</legend>
+                <div class="followup-grid">
+                  <div class="checkbox-group bordered-right">
+                    <p class="group-title">Site visit required?</p>
+                    <div class="options inline-options"><label><input type="radio" name="siteVisit" value="Yes" /><span>Yes</span></label><label><input type="radio" name="siteVisit" value="No" /><span>No</span></label></div>
+                  </div>
+                  <label class="bordered-right">Preferred meeting date<input name="meetingDate" type="date" /></label>
+                  <div class="checkbox-group">
+                    <p class="group-title">Preferred contact method</p>
+                    <div class="options inline-options"><label><input type="checkbox" name="contact" value="Call" /><span>Call</span></label><label><input type="checkbox" name="contact" value="WhatsApp" /><span>WhatsApp</span></label><label><input type="checkbox" name="contact" value="Email" /><span>Email</span></label></div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-section half-section consultant-section">
+                <legend><span>7.</span> Notes by design consultant</legend>
+                <textarea name="consultantNotes" rows="4" aria-label="Notes by design consultant" placeholder="Add consultation notes here..."></textarea>
+                <div class="consultant-signoff"><label>Consultant name<input name="consultantName" type="text" /></label><label>Signature<input name="signature" type="text" /></label></div>
+              </fieldset>
+            </div>
+
+            <div class="form-actions">
+              <p><span class="privacy-mark">✓</span> Client information stays on this device until you share the saved PDF.</p>
+              <div class="action-buttons">
+                <button type="button" class="button secondary" id="save-pdf"><span>↓</span> Download exact PDF</button>
+                <button type="submit" class="button primary">Generate mood board <span>→</span></button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section id="moodboard" class="moodboard" hidden aria-live="polite">
+          <div class="moodboard-heading">
+            <div>
+              <p class="eyebrow">Step 02 · Design direction</p>
+              <h2 id="mood-title">A mood board for <em>your client.</em></h2>
+            </div>
+            <button class="button secondary" type="button" id="back-to-form">← Edit brief</button>
+          </div>
+          <div class="direction-strip">
+            <div><span>DESIGN LANGUAGE</span><b id="direction-style">Contemporary warmth</b></div>
+            <div><span>PROJECT</span><b id="direction-project">Interior project</b></div>
+            <div><span>FOCUS</span><b id="direction-focus">Comfort + function</b></div>
+            <div><span>CLIENT CUES</span><b id="direction-cues">Personalised direction</b></div>
+            <button class="button dark" type="button" id="save-board">↓ Save board as PDF</button>
+          </div>
+          <div class="board-layout">
+            <figure class="board-image image-large"><img id="board-image-1" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85" alt="Warm contemporary living room" /><figcaption id="board-caption-1">Soft structure, natural light</figcaption></figure>
+            <figure class="board-image image-tall"><img id="board-image-2" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="Designed interior detail" /><figcaption id="board-caption-2">Material tactility</figcaption></figure>
+            <div class="palette-card">
+              <p class="eyebrow">Material palette</p>
+              <div class="swatches" id="swatches"><i style="--colour:#3f3029"></i><i style="--colour:#8e715b"></i><i style="--colour:#d5c2a5"></i><i style="--colour:#f0e9df"></i></div>
+              <p id="palette-copy">Walnut · bronzed metal · limestone · warm ivory</p>
+            </div>
+            <figure class="board-image image-wide"><img id="board-image-3" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85" alt="Minimal bedroom interior" /><figcaption id="board-caption-3">A composed, lived-in calm</figcaption></figure>
+            <aside class="board-notes">
+              <span class="quote-mark">“</span>
+              <p id="board-brief">A directional concept shaped around the client’s brief.</p>
+              <span class="note-label">CONCEPT NOTE</span>
+            </aside>
+          </div>
+          <p class="board-footnote">This is an early visual direction, intended to guide the studio conversation rather than final material selection.</p>
+        </section>
+      </main>
+
+      <footer>Thank you for trusting us with your dream space. <em>We look forward to designing it for you.</em></footer>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
